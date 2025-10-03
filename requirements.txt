@@ -1,0 +1,6 @@
+mcp
+google-generativeai
+python-dotenv
+pywin32
+pywinauto
+Pillow
