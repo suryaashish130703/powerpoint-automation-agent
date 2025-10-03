@@ -1,0 +1,31 @@
+# PowerPoint Automation Agent - Email Configuration Template
+# Copy these settings to your .env file
+
+# Google Gemini API Configuration
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# Email Configuration for Log Notifications
+# Gmail SMTP Settings (recommended)
+SENDER_EMAIL=your-email@gmail.com
+SENDER_PASSWORD=your_app_password_here
+RECIPIENT_EMAIL=recipient@example.com
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+
+# Alternative SMTP Settings (if not using Gmail)
+# SENDER_EMAIL=your-email@yourdomain.com
+# SENDER_PASSWORD=your_password_here
+# RECIPIENT_EMAIL=recipient@example.com
+# SMTP_SERVER=smtp.yourdomain.com
+# SMTP_PORT=587
+
+# Instructions for Gmail App Password:
+# 1. Enable 2-Factor Authentication on your Google account
+# 2. Go to Google Account Settings > Security > 2-Step Verification > App passwords
+# 3. Generate an app password for "Mail"
+# 4. Use this app password (not your regular Gmail password) as SENDER_PASSWORD
+
+# Instructions for Other Email Providers:
+# - Outlook/Hotmail: smtp-mail.outlook.com, port 587
+# - Yahoo: smtp.mail.yahoo.com, port 587
+# - Custom SMTP: Check with your email provider for SMTP settings

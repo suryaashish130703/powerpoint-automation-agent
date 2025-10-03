@@ -1,12 +1,13 @@
-# Paint Agent with MCP Server
+# PowerPoint Automation Agent with MCP Server
 
-This project demonstrates an AI agent that solves mathematical problems and visualizes the results using Microsoft Paint through an MCP (Model Context Protocol) server.
+This project demonstrates an AI agent that solves mathematical problems and automatically visualizes the results using Microsoft PowerPoint through an MCP (Model Context Protocol) server, with email logging capabilities.
 
 ## Features
 
 - 🤖 AI-powered mathematical problem solving using Google Gemini
-- 🎨 Automated Paint application control
-- 📊 Visual representation of mathematical results
+- 📊 Automated PowerPoint presentation creation and manipulation
+- 🎨 Automatic rectangle drawing and text insertion
+- 📧 Email logging and notifications (success/error reports)
 - 🔄 Iterative problem-solving with detailed logging
 - 🖥️ Single monitor support (optimized for primary display)
 
@@ -14,8 +15,9 @@ This project demonstrates an AI agent that solves mathematical problems and visu
 
 - Windows 10/11
 - Python 3.8+
-- Microsoft Paint (built into Windows)
+- Microsoft PowerPoint (Office 365 or standalone)
 - Google Gemini API key
+- Email account for logging (Gmail recommended)
 
 ## Installation
 
@@ -26,17 +28,37 @@ This project demonstrates an AI agent that solves mathematical problems and visu
    pip install -r requirements.txt
    ```
 
-3. **Set up your Google Gemini API key:**
+3. **Set up your environment configuration:**
    - Create a `.env` file in the project directory
-   - Add your API key:
+   - Copy settings from `email_config_template.txt`
+   - Add your API key and email settings:
      ```
      GEMINI_API_KEY=your_api_key_here
+     SENDER_EMAIL=your-email@gmail.com
+     SENDER_PASSWORD=your_app_password_here
+     RECIPIENT_EMAIL=recipient@example.com
+     SMTP_SERVER=smtp.gmail.com
+     SMTP_PORT=587
+     ```
+
+4. **Configure Email Logging (Optional but Recommended):**
+   - For Gmail users:
+     1. Enable 2-Factor Authentication on your Google account
+     2. Go to Google Account Settings > Security > 2-Step Verification > App passwords
+     3. Generate an app password for "Mail"
+     4. Use this app password (not your regular Gmail password) as `SENDER_PASSWORD`
+   - Test your email configuration:
+     ```bash
+     python test_email_logger.py
      ```
 
 ## Files Overview
 
 - `powerpoint_working_agent.py` - Main agent script that solves math problems and controls PowerPoint
 - `powerpoint_working_mcp_server.py` - MCP server that provides PowerPoint automation tools
+- `email_logger.py` - Email logging module for sending execution logs and notifications
+- `test_email_logger.py` - Test script to verify email configuration
+- `email_config_template.txt` - Template for email configuration settings
 - `requirements.txt` - Python dependencies
 - `README.md` - This documentation file
 
@@ -87,6 +109,32 @@ ITERATION 1: Opening PowerPoint and Creating New Presentation
 ============================================================
 ITERATION 1 COMPLETE: PowerPoint opened successfully
 ```
+
+## Email Logging Features
+
+The agent includes comprehensive email logging capabilities:
+
+### 📧 **Automatic Email Notifications**
+- **Success Emails:** Sent when the agent completes successfully
+- **Error Emails:** Sent when the agent encounters errors
+- **Detailed Logs:** All execution steps are included in the email
+
+### 📋 **Email Content Includes:**
+- Final mathematical result
+- Execution time and timestamp
+- Complete step-by-step logs
+- Status (SUCCESS/ERROR)
+- Formatted HTML emails with color-coded logs
+
+### 🔧 **Email Configuration:**
+- Supports Gmail, Outlook, Yahoo, and custom SMTP servers
+- Uses App Passwords for Gmail (more secure than regular passwords)
+- Configurable sender and recipient emails
+- Test script included to verify configuration
+
+### 📤 **Email Examples:**
+- **Success:** "✅ PowerPoint Automation - SUCCESS" with final result and logs
+- **Error:** "❌ PowerPoint Automation - ERROR" with error details and logs
 
 ## MCP Server Tools
 
